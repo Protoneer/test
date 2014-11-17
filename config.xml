@@ -17,5 +17,5 @@
       Bertus Kruger 
     </author>
 
-	<!--gap:plugin name="com.unarin.cordova.beacon" version="3.1.2" /-->
+	<gap:plugin name="com.unarin.cordova.beacon" version="3.1.2" />
 </widget>
