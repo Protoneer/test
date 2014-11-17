@@ -17,6 +17,5 @@
       Bertus Kruger 
     </author>
 
-    <!-- We'll include the Barcode plugin as an example -->
-    <gap:plugin name="com.megster.cordova.bluetoothserial" version="0.2.2" />
+	<gap:plugin name="com.unarin.cordova.beacon" version="3.1.2" />
 </widget>
