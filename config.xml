@@ -7,10 +7,10 @@
 
     <!-- versionCode is optional and Android only -->
 
-    <name>BLE</name>
+    <name>BootStrap</name>
 
     <description>
-      BLE Example. 
+      BootStrap. 
     </description>
 
     <author href="https://www.protoneer.co.nz" email="info@protoneer.co.nz">
