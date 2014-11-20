@@ -1,4 +1,12 @@
 <html>
+
+<script>
+window.onerror = function(msg, url, linenumber) {
+    alert('Error message: '+msg+'\nURL: '+url+'\nLine Number: '+linenumber);
+    return true;
+}
+</script>
+
 <body>
 	<p>
 		<a onclick="cordova.exec(null, null, 'EmailComposer', 'showEmailComposer', ['custom subject','body','krugercreations@gmail.com','','',true]);">
