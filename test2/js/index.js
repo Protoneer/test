@@ -6,6 +6,7 @@ var app = {
     Application constructor
  */
     initialize: function() {
+		
         this.bindEvents();
         console.log("Starting SimpleSerial app");
     },
@@ -157,3 +158,7 @@ var app = {
     }
 };      // end of app
 
+window.onerror = function(msg, url, linenumber) {
+    alert('Error message: '+msg+'\nURL: '+url+'\nLine Number: '+linenumber);
+    return true;
+}
