@@ -18,4 +18,5 @@
     </author>
 
     <gap:plugin name="com.megster.cordova.bluetoothserial" version="0.2.2" />
+	<gap:plugin name="de.appplant.cordova.plugin.email-composer" version="0.7.1" />
 </widget>
