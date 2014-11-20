@@ -1,17 +1,18 @@
 <html>
 
+		<script type="text/javascript" src="../cordova.js"></script>
 		<script>
 			function sendEmail(){
 				 window.plugins.emailComposer.showEmailComposer("subject","body", "recipient@something.com", "cc@something.com", "bcc@something.com",false); 
 			}
 		</script>
+
 		<script>
 		window.onerror = function(msg, url, linenumber) {
 			alert('Error message: '+msg+'\nURL: '+url+'\nLine Number: '+linenumber);
 			return true;
 		}
 		</script>
-		<script type="text/javascript" src="../cordova.js"></script>
 
 <body>
 	<p>
