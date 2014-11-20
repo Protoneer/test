@@ -2,9 +2,10 @@
 
 		<script type="text/javascript" src="../cordova.js"></script>
 		<script>
+			cordova.plugins.email.open();
 			function sendEmail(){
 				 window.plugins.emailComposer.showEmailComposer("subject","body", "recipient@something.com", "cc@something.com", "bcc@something.com",false); 
-			}
+			};
 		</script>
 
 		<script>
