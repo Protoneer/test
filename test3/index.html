@@ -3,9 +3,11 @@
 		<script type="text/javascript" src="../cordova.js"></script>
 		<script>
 			cordova.plugins.email.open();
+			/*
 			function sendEmail(){
 				 window.plugins.emailComposer.showEmailComposer("subject","body", "recipient@something.com", "cc@something.com", "bcc@something.com",false); 
 			};
+			*/
 		</script>
 
 		<script>
@@ -20,7 +22,7 @@
 		<a onclick="cordova.exec(null, null, 'EmailComposer', 'showEmailComposer', ['custom subject','body','krugercreations@gmail.com','','',true]);">
 			<img src="btn.png" alt="Send email" height="40" width="40">
 		</a>
-		<a onclick="sendEmail(); return false;">Send Email Now</a>
+		<!--a onclick="sendEmail(); return false;">Send Email Now</a-->
 	</p>
 	
 
