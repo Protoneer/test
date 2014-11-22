@@ -40,22 +40,18 @@
 		  function onTouchStart(event){
 			  currentMousePos.x = event.pageX;
 			  currentMousePos.y = event.pageY;
-			  $("#X").html(currentMousePos.x);	
-			  $("#Y").html(currentMousePos.y);	
+			  $("#X").html(event.touches[0].pageX);	
+			  $("#Y").html(event.touches[0].pageY);	
 			};
 
 			function onTouchMove(event){
 			  currentMousePos.x = event.pageX;
 			  currentMousePos.y = event.pageY;
-			  $("#X").html(currentMousePos.x);	
-			  $("#Y").html(currentMousePos.y);	
 			};
 
 			function onTouchEnd(event){
 			  currentMousePos.x = event.pageX;
 			  currentMousePos.y = event.pageY;
-			  $("#X").html(currentMousePos.x);	
-			  $("#Y").html(currentMousePos.y);	
 			};
 		});
 
