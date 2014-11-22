@@ -18,88 +18,112 @@
     <link href="theme.css" rel="stylesheet">
 
 
-
-	<script>
-		window.onerror = function(msg, url, linenumber) {
-			alert('Error message: '+msg+'\nURL: '+url+'\nLine Number: '+linenumber);
-			return true;
-		}
-	</script>
+    <script>
+        window.onerror = function (msg, url, linenumber) {
+            alert('Error message: ' + msg + '\nURL: ' + url + '\nLine Number: ' + linenumber);
+            return true;
+        }
+    </script>
     <script src="js/jquery.min.js"></script>
 
-	<script>
-		var currentMousePos = { x: -1, y: -1 };
+    <script>
 
-		$( document ).ready(function() {
-		  document.getElementById('JoyStick').addEventListener("touchstart", onTouchStart, true);
-		  document.getElementById('JoyStick').addEventListener("touchend", onTouchEnd, true);
-		  document.getElementById('JoyStick').addEventListener("touchmove", onTouchMove, true);
-		  $("#X").html(currentMousePos.x);	
-		  $("#Y").html(currentMousePos.y);	
 
-		  function onTouchStart(event){
-			  currentMousePos.x = event.pageX;
-			  currentMousePos.y = event.pageY;
-			  $("#X").html(event.touches[0].pageX);	
-			  $("#Y").html(event.touches[0].pageY);	
-			};
+        var currentMousePos = {x: 0, y: 0};
 
-			function onTouchMove(event){
-			  currentMousePos.x = event.pageX;
-			  currentMousePos.y = event.pageY;
-			};
+        var currentMovement = {x: 0, y: 0};
+        var startMovement = {x: 0, y: 0};
 
-			function onTouchEnd(event){
-			  currentMousePos.x = event.pageX;
-			  currentMousePos.y = event.pageY;
-			};
-		});
+        $(document).ready(function () {
+            document.getElementById('JoyStick').addEventListener("touchstart", onTouchStart, true);
+            document.getElementById('JoyStick').addEventListener("touchend", onTouchEnd, true);
+            document.getElementById('JoyStick').addEventListener("touchmove", onTouchMove, true);
+            refreshDisplay();
 
-	</script>
-	
-  </head>
+            function refreshDisplay() {
+                $("#XY").html(currentMousePos.x + ',' + currentMousePos.y);
+                $("#MoveXY").html(currentMovement.x + ',' + currentMovement.y);
+            }
+
+            function onTouchStart(event) {
+                currentMousePos.x = event.pageX;
+                currentMousePos.y = event.pageY;
+
+                startMovement = currentMousePos;
+                currentMovement = {x: 0, y: 0};
+                refreshDisplay();
+            };
+
+            function onTouchMove(event) {
+                currentMousePos.x = event.pageX;
+                currentMousePos.y = event.pageY;
+
+                currentMovement = {x: currentMousePos.x - startMovement.x, y: currentMousePos.y - startMovement.y};
+
+
+                refreshDisplay();
+
+            };
+
+            function onTouchEnd(event) {
+                currentMousePos.x = event.pageX;
+                currentMousePos.y = event.pageY;
+                currentMovement = {x: 0, y: 0};
+
+
+                refreshDisplay();
+
+            };
+        });
+
+    </script>
+
+</head>
 <body role="document">
 
-    <!-- Fixed navbar -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
+<!-- Fixed navbar -->
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">CNC Controller</a>
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">CNC Controller</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="index.html">Home</a></li>
-            <li><a href="pendant.html">Pendant</a></li>
-            <li><a href="bootstrap.html">Bootstrap Demo</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
-	
-	<div class="container theme-showcase" role="main">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="index.html">Home</a></li>
+                <li><a href="pendant.html">Pendant</a></li>
+                <li><a href="bootstrap.html">Bootstrap Demo</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <!--/.nav-collapse -->
+    </div>
+</nav>
 
-      <div class="page-header">
+<div class="container theme-showcase" role="main">
+
+    <div class="page-header">
         <h1>Pendant Control</h1>
-      </div>
-	  <img id="JoyStick" src="Joystick.png">
-	  <div id="X">0</div>
-	  <div id="Y">0</div>
-	  
-	  
-	</div>
+    </div>
+    <img id="JoyStick" src="Joystick.png">
+
+    <div id="XY">0</div>
+    <div id="MoveXY">0</div>
 
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="js/bootstrap.min.js"></script>
-    <!--script src="bootstrap-3.3.1/docs/assets/js/docs.min.js"></script-->
+</div>
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="js/bootstrap.min.js"></script>
+<!--script src="bootstrap-3.3.1/docs/assets/js/docs.min.js"></script-->
 </body>
 </html>
