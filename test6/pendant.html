@@ -24,8 +24,35 @@
 			alert('Error message: '+msg+'\nURL: '+url+'\nLine Number: '+linenumber);
 			return true;
 		}
-		</script>
+	</script>
+    <script src="js/jquery.min.js"></script>
 
+	<script>
+		var currentMousePos = { x: -1, y: -1 };
+
+		$( document ).ready(function() {
+		  document.addEventListener("touchstart", onTouchStart, true);
+		  document.addEventListener("touchend", onTouchEnd, true);
+		  document.addEventListener("touchmove", onTouchMove, true);
+
+		  function onTouchStart(event){
+			  currentMousePos.x = event.pageX;
+			  currentMousePos.y = event.pageY;
+			  $("#XY").html("sdfsdfsfd");	
+			};
+
+			function onTouchMove(event){
+			  currentMousePos.x = event.pageX;
+			  currentMousePos.y = event.pageY;
+			};
+
+			function onTouchEnd(event){
+			  currentMousePos.x = event.pageX;
+			  currentMousePos.y = event.pageY;
+			};
+		});
+
+	</script>
 	
   </head>
 <body role="document">
@@ -59,13 +86,15 @@
         <h1>Pendant Control</h1>
       </div>
 	  <img src="Joystick.png" alt="Mountain View" style="width:100%;">
+	  <div id="XY">0,0</div>
+	  
+	  
 	</div>
 
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <!--script src="bootstrap-3.3.1/docs/assets/js/docs.min.js"></script-->
 </body>
