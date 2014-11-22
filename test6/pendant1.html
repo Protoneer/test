@@ -31,9 +31,9 @@
 		var currentMousePos = { x: -1, y: -1 };
 
 		$( document ).ready(function() {
-		  document.addEventListener("touchstart", onTouchStart, true);
-		  document.addEventListener("touchend", onTouchEnd, true);
-		  document.addEventListener("touchmove", onTouchMove, true);
+		  document.getElementById('JoyStick').addEventListener("touchstart", onTouchStart, true);
+		  document.getElementById('JoyStick').addEventListener("touchend", onTouchEnd, true);
+		  document.getElementById('JoyStick').addEventListener("touchmove", onTouchMove, true);
 		  $("#X").html(currentMousePos.x);	
 		  $("#Y").html(currentMousePos.y);	
 
@@ -88,7 +88,7 @@
       <div class="page-header">
         <h1>Pendant Control</h1>
       </div>
-	  <img src="Joystick.png" alt="Mountain View" style="width:100%;">
+	  <img id="JoyStick" src="Joystick.png" alt="Mountain View" style="width:100%;">
 	  <div id="X">0</div>
 	  <div id="Y">0</div>
 	  
