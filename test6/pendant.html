@@ -34,22 +34,28 @@
 		  document.addEventListener("touchstart", onTouchStart, true);
 		  document.addEventListener("touchend", onTouchEnd, true);
 		  document.addEventListener("touchmove", onTouchMove, true);
+		  $("#X").html(currentMousePos.x);	
+		  $("#Y").html(currentMousePos.y);	
 
 		  function onTouchStart(event){
 			  currentMousePos.x = event.pageX;
 			  currentMousePos.y = event.pageY;
-			  $("#X").html(event.pageX);	
-			  $("#Y").html(event.pageY);	
+			  $("#X").html(currentMousePos.x);	
+			  $("#Y").html(currentMousePos.y);	
 			};
 
 			function onTouchMove(event){
 			  currentMousePos.x = event.pageX;
 			  currentMousePos.y = event.pageY;
+			  $("#X").html(currentMousePos.x);	
+			  $("#Y").html(currentMousePos.y);	
 			};
 
 			function onTouchEnd(event){
 			  currentMousePos.x = event.pageX;
 			  currentMousePos.y = event.pageY;
+			  $("#X").html(currentMousePos.x);	
+			  $("#Y").html(currentMousePos.y);	
 			};
 		});
 
