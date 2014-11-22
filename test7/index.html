@@ -15,21 +15,35 @@
 	
 	<script type="text/javascript">
 	
-		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		})(window,document,'script','analytics.js','ga');
+	
+		document.addEventListener("deviceready", onDeviceReady, false);
 
-		var ua = 'UA-56998556-1';
-			ga('create', ua, {'storage': 'none','clientId': device.uuid});
-			ga('set','checkProtocolTask',null);
-			ga('set','checkStorageTask',null);
-			ga('send', 'pageview', {'page': '/itWorks!!!!'});     
+		function onDeviceReady() {
+			var element = document.getElementById('deviceProperties');
+			element.innerHTML = 'Device Model: '    + device.model    + '<br />' +
+								'Device Cordova: '  + device.cordova  + '<br />' +
+								'Device Platform: ' + device.platform + '<br />' +
+								'Device UUID: '     + device.uuid     + '<br />' +
+								'Device Version: '  + device.version  + '<br />';
+
+								(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','analytics.js','ga');
+
+			var ua = 'UA-56998556-1';
+				ga('create', ua, {'storage': 'none','clientId': device.uuid});
+				ga('set','checkProtocolTask',null);
+				ga('set','checkStorageTask',null);
+				ga('send', 'pageview', {'page': '/itWorks!!!!'});     
+		}	
+	
 
 	</script>
 </head>
 <body>
 	<a href="#" onclick="ga('send','pageview','/test-pageview');return false;">Send UA Pageview...</a>
 	<h1>Test</h1>
+	<div id='deviceProperties'></div>
 </body>
 </html>
