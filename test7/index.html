@@ -12,7 +12,8 @@
 	</script>
 
 		<link rel="stylesheet" href="master.css" type="text/css" media="screen" title="no title">
-		<script type="text/javascript" charset="utf-8" src="cordova-2.5.0.js"></script>
+		<script type="text/javascript" src="../cordova.js"></script>
+
 		<script type="text/javascript" src="GAPlugin.js"></script>
 
 		<script type="text/javascript">
@@ -24,6 +25,7 @@
 		
 			function onDeviceReady() {
 				gaPlugin = window.plugins.gaPlugin;
+				alert(gaPlugin);
 				
 				// Note: A request for permission is REQUIRED by google. You probably want to do this just once, though, and remember the answer for subsequent runs.
 				navigator.notification.confirm('GA_PLUGIN would like your permission to collect usage data. No personal or user identifiable data will be collected.', permissionCallback, 'Attention', 'Allow,Deny');
