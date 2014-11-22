@@ -38,7 +38,8 @@
 		  function onTouchStart(event){
 			  currentMousePos.x = event.pageX;
 			  currentMousePos.y = event.pageY;
-			  $("#XY").html("sdfsdfsfd");	
+			  $("#X").html(event.pageX);	
+			  $("#Y").html(event.pageY);	
 			};
 
 			function onTouchMove(event){
@@ -85,9 +86,9 @@
       <div class="page-header">
         <h1>Pendant Control</h1>
       </div>
-	  <div id="XY">0,0</div>
 	  <img src="Joystick.png" alt="Mountain View" style="width:100%;">
-	  <div id="XY">0,0</div>
+	  <div id="X">0</div>
+	  <div id="Y">0</div>
 	  
 	  
 	</div>
