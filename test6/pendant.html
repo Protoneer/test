@@ -1,109 +1,72 @@
-<!DOCTYPE HTML>
-<html lang="en-US">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Theme Template for Bootstrap</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap theme -->
-    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="theme.css" rel="stylesheet">
-
-
-
-	<script>
-		window.onerror = function(msg, url, linenumber) {
-			alert('Error message: '+msg+'\nURL: '+url+'\nLine Number: '+linenumber);
-			return true;
-		}
-	</script>
-    <script src="js/jquery.min.js"></script>
-
-	<script>
-		var currentMousePos = { x: -1, y: -1 };
-
-		$( document ).ready(function() {
-		  document.addEventListener("touchstart", onTouchStart, true);
-		  document.addEventListener("touchend", onTouchEnd, true);
-		  document.addEventListener("touchmove", onTouchMove, true);
-		  $("#X").html(currentMousePos.x);	
-		  $("#Y").html(currentMousePos.y);	
-
-		  function onTouchStart(event){
-			  currentMousePos.x = event.pageX;
-			  currentMousePos.y = event.pageY;
-			  $("#X").html(currentMousePos.x);	
-			  $("#Y").html(currentMousePos.y);	
-			};
-
-			function onTouchMove(event){
-			  currentMousePos.x = event.pageX;
-			  currentMousePos.y = event.pageY;
-			  $("#X").html(currentMousePos.x);	
-			  $("#Y").html(currentMousePos.y);	
-			};
-
-			function onTouchEnd(event){
-			  currentMousePos.x = event.pageX;
-			  currentMousePos.y = event.pageY;
-			  $("#X").html(currentMousePos.x);	
-			  $("#Y").html(currentMousePos.y);	
-			};
-		});
-
-	</script>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Touch Tracker Marker</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+<style type="text/css">
+body { margin: 0px; overflow: hidden; }
+canvas { border: 1px solid black; }
+</style>
+<script type="text/javascript" src="magictouch.js"></script>
+<script type="text/javascript">
+var canvas;
+var ctx;
+var w = 0;
+var h = 0;
+var timer;
+var updateStarted = false;
+var touches = [];
+function update() {
+	if (updateStarted) return;
+	updateStarted = true;
+	var nw = window.innerWidth;
+	var nh = window.innerHeight;
+	if ((w != nw) || (h != nh)) {
+		w = nw;
+		h = nh;
+		canvas.style.width = w+'px';
+		canvas.style.height = h+'px';
+		canvas.width = w;
+		canvas.height = h;
+	}
+	ctx.clearRect(0, 0, w, h);
+	var i, len = touches.length;
+	for (i=0; i<len; i++) {
+		var touch = touches[i];
+    var px = touch.pageX;
+    var py = touch.pageY;
+		ctx.beginPath();
+		ctx.arc(px, py, 20, 0, 2*Math.PI, true);
+		ctx.fillStyle = "rgba(0, 0, 200, 0.2)";
+		ctx.fill();
+		ctx.lineWidth = 2.0;
+		ctx.strokeStyle = "rgba(0, 0, 200, 0.8)";
+		ctx.stroke();
+    console.log('drawn circle at ' + px +',' + py);
+	}
+	updateStarted = false;
+}
+function ol() {
+	canvas = document.getElementById('canvas');
+	ctx = canvas.getContext('2d');
+	timer = setInterval(update, 15);
+canvas.addEventListener('touchend', function() {
+	ctx.clearRect(0, 0, w, h);
+});
+canvas.addEventListener('touchmove', function(event) {
+  event.preventDefault();
+  touches = event.touches;
+});
+canvas.addEventListener('touchstart', function(event) {
+  console.log('start');
+});
+};
+</script>
+</head>
+<body onload="ol()">
 	
-  </head>
-<body role="document">
+<canvas id="canvas" width="300" height="300" style="top:0px; left:0px; width: 300px; height: 300px;"></canvas>
+<object id="tuio" type="application/x-tuio">Plugin FAILED to load</object>
 
-    <!-- Fixed navbar -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">CNC Controller</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="index.html">Home</a></li>
-            <li><a href="pendant.html">Pendant</a></li>
-            <li><a href="bootstrap.html">Bootstrap Demo</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
-	
-	<div class="container theme-showcase" role="main">
-
-      <div class="page-header">
-        <h1>Pendant Control</h1>
-      </div>
-	  <img src="Joystick.png" alt="Mountain View" style="width:100%;">
-	  <div id="X">0</div>
-	  <div id="Y">0</div>
-	  
-	  
-	</div>
-
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="js/bootstrap.min.js"></script>
-    <!--script src="bootstrap-3.3.1/docs/assets/js/docs.min.js"></script-->
 </body>
 </html>
