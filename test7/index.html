@@ -34,15 +34,18 @@
 		
 			function permissionCallback (button) {
 				if (button === 1)
+				{
 					gaPlugin.init(nativePluginResultHandler, nativePluginErrorHandler, "UA-56998556-1", 10);
+					alert('Ga Init');
+				}
 			}
 			function nativePluginResultHandler (result) {
-				//alert('nativePluginResultHandler - '+result);
+				alert('nativePluginResultHandler - '+result);
 				console.log('nativePluginResultHandler: '+result);
 			}
         
 			function nativePluginErrorHandler (error) {
-				//alert('nativePluginErrorHandler - '+error);
+				alert('nativePluginErrorHandler - '+error);
 				console.log('nativePluginErrorHandler: '+error);
 			}
 			
