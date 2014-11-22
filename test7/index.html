@@ -12,7 +12,6 @@
 	<script type="text/javascript" src="../cordova.js"></script>
 
 
-
 	
 	<script type="text/javascript">
 	
@@ -22,7 +21,7 @@
 		})(window,document,'script','analytics.js','ga');
 
 		var ua = 'UA-56998556-1';
-			ga('create', ua, {'storage': 'none','clientId': "sdfsdf"});
+			ga('create', ua, {'storage': 'none','clientId': device.uuid});
 			ga('set','checkProtocolTask',null);
 			ga('set','checkStorageTask',null);
 			ga('send', 'pageview', {'page': '/itWorks!!!!'});     
