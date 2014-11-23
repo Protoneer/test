@@ -55,7 +55,7 @@
 
                 $("#X").html(event.touches[0].pageX);
                 $("#Y").html(event.touches[0].pageY);
-            };
+            }
 
             function onTouchMove(event) {
                 currentMousePos.x = event.pageX;
@@ -66,7 +66,7 @@
 
                 $("#MoveX").html(currentMove.x);
                 $("#MoveY").html(currentMove.y);
-            };
+            }
 
             function onTouchEnd(event) {
                 currentMousePos.x = event.pageX;
@@ -74,7 +74,7 @@
 
                 currentMove.x = 0;
                 currentMove.y = 0;
-            };
+            }
         });
 
 
@@ -117,8 +117,8 @@
 
     <div id="X">0</div>
     <div id="Y">0</div>
-    <div id="Move">TestX</div>
-    <div id="Move">TestY</div>
+    <div id="MoveX">TestX</div>
+    <div id="MoveY">TestY</div>
 
 
 </div>
