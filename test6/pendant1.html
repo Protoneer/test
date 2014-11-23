@@ -27,47 +27,13 @@
 
 
     <script>
-        /*
-         var currentMousePos = {x: 0, y: 0};
+        var currentMousePos = {x: 0, y: 0};
 
-         //var currentMovement = {x: 0, y: 0};
-         //var startMovement = {x: 0, y: 0};
-
-         $(document).ready(function () {
-         document.getElementById('JoyStick').addEventListener("touchstart", onTouchStart, true);
-         document.getElementById('JoyStick').addEventListener("touchend", onTouchEnd, true);
-         document.getElementById('JoyStick').addEventListener("touchmove", onTouchMove, true);
-
-         refreshDisplay();
-
-         function refreshDisplay() {
-         $("#XY").html(currentMousePos.x);
-         //$("#MoveXY").html(currentMovement.x + ',' + currentMovement.y);
-         }
-
-         function onTouchStart(event) {
-         currentMousePos = {x : event.pageX, y: event.pageY};
-         //startMovement = {x : event.pageX, y: event.pageY};
-         //currentMovement = {x: 0, y: 0};
-         refreshDisplay();
-         }
-
-         function onTouchMove(event) {
-         currentMousePos = {x : event.pageX, y: event.pageY};
-         //currentMovement = {x: currentMousePos.x - startMovement.x, y: currentMousePos.y - startMovement.y};
-         refreshDisplay();
-         }
-
-         function onTouchEnd(event) {
-         currentMousePos = {x : event.pageX, y: event.pageY};
-         //currentMovement = {x: 0, y: 0};
-         refreshDisplay();
-         }
-         });
-         */
+        var startTouchPos = {x: 0, y: 0};
+        var endTouchPos = {x: 0, y: 0};
+        var currentMove = {x: 0, y: 0};
 
 
-        var currentMousePos = {x: -1, y: -1};
 
         $(document).ready(function () {
             document.getElementById('JoyStick').addEventListener("touchstart", onTouchStart, true);
@@ -79,6 +45,14 @@
             function onTouchStart(event) {
                 currentMousePos.x = event.pageX;
                 currentMousePos.y = event.pageY;
+
+                startTouchPos.x = event.pageX;
+                startTouchPos.y = event.pageY;
+
+                currentMove.x = 0;
+                currentMove.y = 0;
+
+
                 $("#X").html(event.touches[0].pageX);
                 $("#Y").html(event.touches[0].pageY);
             };
@@ -86,11 +60,20 @@
             function onTouchMove(event) {
                 currentMousePos.x = event.pageX;
                 currentMousePos.y = event.pageY;
+
+                currentMove.x = startTouchPos.x - event.pageX;
+                currentMove.y = startTouchPos.y - event.pageY;
+
+                $("#MoveX").html(currentMove.x);
+                $("#MoveY").html(currentMove.y);
             };
 
             function onTouchEnd(event) {
                 currentMousePos.x = event.pageX;
                 currentMousePos.y = event.pageY;
+
+                currentMove.x = 0;
+                currentMove.y = 0;
             };
         });
 
@@ -134,7 +117,7 @@
 
     <div id="X">0</div>
     <div id="Y">0</div>
-    <div id="Test">Test</div>
+    <div id="Move">Test</div>
 
 
 </div>
