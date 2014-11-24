@@ -13,14 +13,6 @@ function TouchPad()
 }
 
 function Joy(){
-    //virtual joystick for ipad
-    //console.log("joystick created");
-    //when activated, document will have the following properties
-    //mouseX, mouseY: touch read as mouse input
-    //diffX, diffY: touch motion read as a joystick input
-    //if virtKeys is set true
-    //joystick inputs will be read as arrow keys
-
     //properties
     SENSITIVITY = 50;
     diffX = 0;
@@ -52,38 +44,6 @@ function Joy(){
         this.diffX = touches[0].screenX - startX;
         this.diffY = touches[0].screenY - startY;
         result += "dx: " + this.diffX + ", dy: " + this.diffY;
-
-
-        /*
-        //manage virtual keys if enabled
-        if (virtKeys){
-            THRESHHOLD = 10;
-            if (this.diffX > THRESHHOLD){
-                keysDown[K_RIGHT] = true;
-            } else {
-                keysDown[K_RIGHT] = false;
-            } // end if
-
-            if (this.diffX < -THRESHHOLD){
-                keysDown[K_LEFT] = true;
-            } else {
-                keysDown[K_LEFT] = false;
-            } // end if
-
-            if (this.diffY > THRESHHOLD){
-                keysDown[K_DOWN] = true;
-            } else {
-                keysDown[K_DOWN] = false;
-            } // end if
-
-            if (this.diffY < -THRESHHOLD){
-                keysDown[K_UP] = true;
-            } else {
-                keysDown[K_UP] = false;
-            } // end if
-
-        } // end if
-        */
     } // end onTouchMove
 
     this.onTouchEnd = function(event){
@@ -91,16 +51,6 @@ function Joy(){
         touches = event.touches;
         this.diffX = 0;
         this.diffY = 0;
-
-        /*
-        //turn off all virtual keys
-        if (virtKeys){
-            keysDown[K_LEFT] = false;
-            keysDown[K_RIGHT] = false;
-            keysDown[K_UP] = false;
-            keysDown[K_DOWN] = false;
-        }
-        */
     } // end onTouchEnd
 
     // add utility methods to retrieve various attributes
