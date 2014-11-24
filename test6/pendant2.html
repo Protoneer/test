@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <script>
+        window.onerror = function (msg, url, linenumber) {
+            alert('Error message: ' + msg + '\nURL: ' + url + '\nLine Number: ' + linenumber);
+            return true;
+        }
+    </script>
+
+    <script src="js/jquery.min.js"></script>
+    <script type="text/javascript" src = "TouchPad.js"></script>
+    <script type="text/javascript">
+        var tPad;
+        var joystick;
+
+        function init(){
+
+            tPad = new TouchPad();
+
+            if (!tPad.touchable) {
+                alert("Need touch screen");
+            } else {
+                tPad.start();
+                joystick = new Joy();
+            }
+
+        }
+        function update() {
+            $("#output").html("Working");
+            if (tPad.touchable){
+                jx = joystick.getMouseX();
+                jy = joystick.getMouseY();
+                jdx = joystick.getDiffX();
+                jdy = joystick.getDiffY();
+
+                result = "joystick x: " + jx + "<br />";
+                result += "joystick y: " + jy + "<br />";
+                result += "joystick dx: " + jdx + "<br />";
+                result += "joystick dy: " + jdy + "<br />";
+
+                output.innerHTML = result;
+            } else {
+                alert("This example expects a touch screen");
+            }
+        }
+
+    </script>
+</head>
+<body onload = "init()">
+    <div id = "output">Touch Screen required</div>
+</body>
+</html>

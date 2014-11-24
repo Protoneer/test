@@ -27,6 +27,8 @@
 
 
     <script>
+
+        /*
         var currentMousePos = {x: 0, y: 0};
 
         var startTouchPos = {x: 0, y: 0};
@@ -43,11 +45,16 @@
             $("#Y").html(currentMousePos.y);
 
             function onTouchStart(event) {
+                event.preventDefault();
                 currentMousePos.x = event.pageX;
                 currentMousePos.y = event.pageY;
 
-                startTouchPos.x = event.pageX;
-                startTouchPos.y = event.pageY;
+                startTouchPos.x = event.touches[0].pageX;
+                startTouchPos.y = event.touches[0].pageY;
+
+                $("#StartX").html("Start:"+startTouchPos.x);
+                $("#StartY").html("Start:"+startTouchPos.y);
+
 
                 currentMove.x = 0;
                 currentMove.y = 0;
@@ -58,14 +65,15 @@
             }
 
             function onTouchMove(event) {
+                event.preventDefault();
                 currentMousePos.x = event.pageX;
                 currentMousePos.y = event.pageY;
 
                 currentMove.x = startTouchPos.x - event.pageX;
                 currentMove.y = startTouchPos.y - event.pageY;
 
-                $("#MoveX").html(currentMove.x);
-                $("#MoveY").html(currentMove.y);
+                //$("#MoveX").html("Move:"+currentMove.x);
+                //$("#MoveY").html("Move:"+currentMove.y);
             }
 
             function onTouchEnd(event) {
@@ -74,8 +82,16 @@
 
                 currentMove.x = 0;
                 currentMove.y = 0;
+                $("#X").html(event.pageX);
+                $("#Y").html(event.pageY);
             }
         });
+        */
+
+
+
+
+
 
 
     </script>
@@ -117,6 +133,8 @@
 
     <div id="X">0</div>
     <div id="Y">0</div>
+    <div id="StartX">TestX</div>
+    <div id="StartY">TestY</div>
     <div id="MoveX">TestX</div>
     <div id="MoveY">TestY</div>
 
